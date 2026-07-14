@@ -1,0 +1,127 @@
+/* =========================================
+   PLANES PÚBLICOS
+========================================= */
+
+.grid-planes {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100%, 17rem), 1fr)
+    );
+    gap: 2rem;
+    align-items: stretch;
+}
+
+.card-plan {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.card-plan h2 {
+    color: var(--navy);
+    margin-top: 1rem;
+}
+
+.precio {
+    color: var(--teal);
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.periodo {
+    color: var(--teal);
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.descripcion-plan {
+    margin-bottom: 1rem;
+}
+
+.lista-plan {
+    margin: 1.5rem 0;
+    text-align: left;
+}
+
+.lista-plan li {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--sky);
+}
+
+/*
+Empuja el botón al final para que todas
+las tarjetas mantengan una altura uniforme.
+*/
+.card-plan .btn-principal,
+.btn-plan-bloqueado {
+    margin-top: auto;
+}
+
+/* =========================================
+   MÁS VENDIDO
+========================================= */
+
+.plan-destacado {
+    border: 0.15rem solid var(--teal);
+}
+
+.badge {
+    display: inline-block;
+    align-self: center;
+    background-color: var(--navy);
+    color: var(--white);
+    padding: 0.4rem 0.9rem;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* =========================================
+   PRÓXIMAMENTE
+========================================= */
+
+.plan-proximamente {
+    opacity: 0.6;
+    filter: grayscale(0.25);
+    box-shadow: none;
+}
+
+/* No se eleva porque no está disponible */
+.plan-proximamente:hover {
+    transform: none;
+}
+
+.badge-proximamente {
+    display: inline-block;
+    align-self: center;
+    background-color: var(--sky);
+    color: var(--navy);
+    padding: 0.4rem 0.9rem;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-top: 0.6rem;
+}
+
+.btn-plan-bloqueado {
+    display: inline-block;
+    padding: 0.8rem 1.3rem;
+    border-radius: 2rem;
+    background-color: #d3d7da;
+    color: #626b70;
+    font-weight: bold;
+    cursor: not-allowed;
+}
+
+.sin-resultados {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--navy);
+}
