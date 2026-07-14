@@ -1,0 +1,382 @@
+/* =========================================================
+   PLANES — PANEL ADMINISTRATIVO
+========================================================= */
+
+:root {
+    --navy: #2f4156;
+    --teal: #567c8d;
+    --sky: #c8d9e6;
+    --white: #ffffff;
+    --text: #263238;
+}
+
+/* =========================================================
+   ENCABEZADO DEL LISTADO
+========================================================= */
+
+.cabecera-planes {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.cabecera-planes h1,
+.encabezado-formulario-plan h1 {
+    margin: 0.4rem 0;
+    color: var(--navy);
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+}
+
+.cabecera-planes p,
+.encabezado-formulario-plan p {
+    max-width: 45rem;
+    color: #56616a;
+}
+
+.btn-agregar-plan {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 1.4rem;
+    border-radius: 2rem;
+    background-color: var(--teal);
+    color: var(--white);
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.btn-agregar-plan:hover {
+    background-color: var(--navy);
+}
+
+/* =========================================================
+   MENSAJES
+========================================================= */
+
+.mensaje-plan {
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.2rem;
+    border-radius: 0.9rem;
+    font-weight: bold;
+}
+
+.mensaje-exito {
+    background-color: #dff2e9;
+    color: #287353;
+}
+
+.mensaje-error {
+    background-color: #f7dddd;
+    color: #a33a3a;
+}
+
+/* =========================================================
+   TABLA
+========================================================= */
+
+.contenedor-tabla-planes {
+    width: 100%;
+    padding: 1.5rem;
+    overflow-x: auto;
+    border-radius: 1.3rem;
+    background-color: var(--white);
+    box-shadow: 0 0.8rem 2rem rgba(47, 65, 86, 0.11);
+}
+
+.tabla-planes {
+    width: 100%;
+    min-width: 68rem;
+    border-collapse: collapse;
+}
+
+.tabla-planes thead {
+    background-color: #f3f6f7;
+}
+
+.tabla-planes th {
+    padding: 1rem;
+    border-bottom: 0.15rem solid var(--sky);
+    color: var(--navy);
+    text-align: left;
+    white-space: nowrap;
+}
+
+.tabla-planes td {
+    padding: 1.1rem 1rem;
+    border-bottom: 1px solid #e3e8eb;
+    vertical-align: middle;
+}
+
+.tabla-planes tbody tr:hover {
+    background-color: #f8fafb;
+}
+
+.informacion-plan {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.informacion-plan strong {
+    color: var(--navy);
+}
+
+.informacion-plan small {
+    max-width: 19rem;
+    color: #68747c;
+    line-height: 1.4;
+}
+
+.precio-tabla {
+    color: var(--navy);
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.celda-centrada {
+    text-align: center;
+}
+
+/* =========================================================
+   ESTADOS
+========================================================= */
+
+.etiqueta-estado {
+    display: inline-block;
+    padding: 0.45rem 0.85rem;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.estado-activo {
+    background-color: #dff2e9;
+    color: #287353;
+}
+
+.estado-proximamente {
+    background-color: #fff1cc;
+    color: #906b13;
+}
+
+.estado-desactivado {
+    background-color: #f1e1e1;
+    color: #a33a3a;
+}
+
+/* =========================================================
+   INTERESADOS
+========================================================= */
+
+.numero-interesados {
+    display: inline-grid;
+    place-items: center;
+    min-width: 2.4rem;
+    height: 2.4rem;
+    padding: 0 0.6rem;
+    border-radius: 50%;
+    background-color: var(--sky);
+    color: var(--navy);
+    font-weight: bold;
+}
+
+.etiqueta-mas-vendido {
+    display: inline-block;
+    padding: 0.45rem 0.85rem;
+    border-radius: 2rem;
+    background-color: var(--navy);
+    color: var(--white);
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.sin-resultado {
+    color: #8a959c;
+}
+
+/* =========================================================
+   ACCIONES
+========================================================= */
+
+.acciones-plan {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
+
+.acciones-plan form {
+    margin: 0;
+}
+
+.btn-editar-plan,
+.btn-eliminar-plan {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 5rem;
+    padding: 0.55rem 0.85rem;
+    border: none;
+    border-radius: 0.65rem;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-editar-plan {
+    background-color: var(--teal);
+    color: var(--white);
+}
+
+.btn-eliminar-plan {
+    background-color: #f5dddd;
+    color: #a33a3a;
+}
+
+.tabla-planes-vacia {
+    padding: 3rem !important;
+    color: #68747c;
+    text-align: center;
+}
+
+/* =========================================================
+   FORMULARIOS
+========================================================= */
+
+.encabezado-formulario-plan {
+    margin-bottom: 2rem;
+}
+
+.contenedor-formulario-plan {
+    width: min(100%, 55rem);
+}
+
+.formulario-plan {
+    padding: clamp(1.4rem, 4vw, 2.5rem);
+    border-radius: 1.3rem;
+    background-color: var(--white);
+    box-shadow: 0 0.8rem 2rem rgba(47, 65, 86, 0.11);
+}
+
+.campo-plan {
+    margin-bottom: 1.4rem;
+}
+
+.campo-plan label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--navy);
+    font-weight: bold;
+}
+
+.campo-plan input,
+.campo-plan textarea,
+.campo-plan select {
+    width: 100%;
+    padding: 0.95rem 1rem;
+    border: 1px solid var(--sky);
+    border-radius: 0.8rem;
+    background-color: var(--white);
+    color: var(--text);
+    font: inherit;
+    outline: none;
+}
+
+.campo-plan input:focus,
+.campo-plan textarea:focus,
+.campo-plan select:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 0.2rem rgba(86, 124, 141, 0.14);
+}
+
+.campo-plan textarea {
+    min-height: 8rem;
+    resize: vertical;
+}
+
+.fila-campos-plan {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+}
+
+.ayuda-estado {
+    padding: 1rem 1.2rem;
+    border-radius: 0.9rem;
+    background-color: #f3f6f7;
+    color: #59666e;
+    font-size: 0.9rem;
+}
+
+.ayuda-estado p + p {
+    margin-top: 0.4rem;
+}
+
+.acciones-formulario-plan {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-guardar-plan,
+.btn-cancelar-plan {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 1.4rem;
+    border-radius: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-guardar-plan {
+    border: none;
+    background-color: var(--teal);
+    color: var(--white);
+}
+
+.btn-cancelar-plan {
+    border: 1px solid var(--navy);
+    color: var(--navy);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+    .cabecera-planes {
+        flex-direction: column;
+    }
+
+    .fila-campos-plan {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .contenedor-tabla-planes {
+        padding: 0.8rem;
+    }
+
+    .formulario-plan {
+        padding: 1.3rem;
+    }
+
+    .acciones-formulario-plan {
+        flex-direction: column;
+    }
+
+    .btn-guardar-plan,
+    .btn-cancelar-plan {
+        width: 100%;
+    }
+}

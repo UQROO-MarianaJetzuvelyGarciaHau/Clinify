@@ -10,8 +10,32 @@
             <li><a href="contacto.php">Contacto</a></li>
         </ul>
 
-        <a href="admin/login.php" class="btn-login">Iniciar sesión</a>
-        
+        <?php if (isset($_SESSION['usuario_id'])) { ?>
+
+        <!--
+    Cuando existe una sesión, el botón permite
+    regresar al panel administrativo.
+    -->
+        <a href="admin/dashboard.php" class="btn-login">
+
+            Volver al dashboard
+
+        </a>
+
+        <?php } else { ?>
+
+        <!--
+    Cuando no hay sesión, se muestra el enlace
+    normal para iniciar sesión.
+    -->
+        <a href="admin/login.php" class="btn-login">
+
+            Iniciar sesión
+
+        </a>
+
+        <?php } ?>
+
 
         <!-- Botón para menú móvil -->
         <button class="btn-menu" id="btnMenu">☰</button>

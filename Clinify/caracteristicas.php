@@ -62,7 +62,6 @@ $caracteristicas = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
                 <h3><?php echo $caracteristicas[3]['titulo']; ?></h3>
                 <p><?php echo $caracteristicas[3]['descripcion']; ?></p>
             </article>
-
         </div>
     </section>
 

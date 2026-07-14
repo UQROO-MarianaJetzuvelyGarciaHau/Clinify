@@ -1,3 +1,18 @@
+
+<?php
+
+/*
+Recuperar la sesión del administrador o asistente.
+
+Esto permite que el menú público sepa si existe
+una sesión iniciada.
+*/
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

@@ -1,44 +1,50 @@
 <aside class="sidebar">
 
+    <!-- Nombre del sistema y rol -->
     <div class="logo-admin">
 
-        <a href="dashboard.php">
+        <a href="/Clinify/admin/dashboard.php">
             Clinify
         </a>
 
         <span>
-            <?php echo htmlspecialchars($_SESSION['rol']); ?>
+            <?php
+            echo htmlspecialchars(
+                $_SESSION['rol'] ?? ''
+            );
+            ?>
         </span>
 
     </div>
 
+    <!-- Menú principal -->
     <nav class="menu-admin">
 
-        <a href="dashboard.php">
+        <a href="/Clinify/admin/dashboard.php">
             Dashboard
         </a>
 
-        <!-- Ambos roles pueden acceder -->
-        <a href="planes.php">
+        <!-- Administrador y Asistente -->
+        <a href="/Clinify/admin/plan/planes.php">
             Planes
         </a>
 
-        <a href="caracteristicas.php">
+        <a href="/Clinify/admin/caracteristicas/caracteristicas.php">
             Características
         </a>
 
-        <a href="contactos.php">
+        <a href="/Clinify/admin/contactos/contactos.php">
             Contactos
         </a>
 
         <!-- Opciones exclusivas del Administrador -->
         <?php if (esAdministrador()) { ?>
 
-            <a href="equipo.php">
+            <a href="/Clinify/admin/equipo/equipo.php">
                 Equipo
             </a>
 
-            <a href="usuarios.php">
+            <a href="/Clinify/admin/usuario/usuarios.php">
                 Perfiles
             </a>
 
@@ -46,26 +52,39 @@
 
     </nav>
 
+    <!-- Información del usuario -->
     <div class="sidebar-pie">
 
         <p>
             <?php
-            echo htmlspecialchars($_SESSION['usuario_nombre']);
+            echo htmlspecialchars(
+                $_SESSION['usuario_nombre'] ?? ''
+            );
             ?>
         </p>
 
         <span class="rol-usuario">
-            <?php echo htmlspecialchars($_SESSION['rol']); ?>
+            <?php
+            echo htmlspecialchars(
+                $_SESSION['rol'] ?? ''
+            );
+            ?>
         </span>
 
-        <a href="../index.php" class="enlace-sitio">
+        <a
+            href="/Clinify/index.php"
+            class="enlace-sitio">
+
             Ver sitio público
+
         </a>
 
         <a
-            href="actions/cerrar_sesion.php"
+            href="/Clinify/admin/actions/cerrar_sesion.php"
             class="cerrar-sesion">
+
             Cerrar sesión
+
         </a>
 
     </div>

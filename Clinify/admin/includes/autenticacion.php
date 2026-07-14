@@ -1,25 +1,36 @@
 <?php
 
-/* Iniciar la sesión únicamente si todavía no está activa */
+/*
+Iniciar la sesión solamente cuando todavía
+no existe una sesión activa.
+*/
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-/* Impedir el acceso al panel cuando no existe una sesión */
+/*
+Si no existe un usuario autenticado,
+regresamos al inicio de sesión.
+*/
 if (!isset($_SESSION['usuario_id'])) {
     header("Location: login.php");
     exit();
 }
 
-/* Comprobar si el usuario actual es Administrador */
-function esAdministrador(): bool
+/*
+Comprobar si el usuario actual tiene
+el rol Administrador.
+*/
+function esAdministrador()
 {
     return isset($_SESSION['rol'])
         && $_SESSION['rol'] === 'Administrador';
 }
 
-/* Proteger páginas exclusivas del Administrador */
-function requerirAdministrador(): void
+/*
+Proteger páginas exclusivas del Administrador.
+*/
+function requerirAdministrador()
 {
     if (!esAdministrador()) {
         header("Location: dashboard.php?acceso=denegado");
@@ -28,23 +39,27 @@ function requerirAdministrador(): void
 }
 
 /*
-Permitir el acceso a Administradores y Asistentes.
-
-Actualmente ambos roles pueden administrar:
-- Planes
-- Características
-- Contactos
+Comprobar si el usuario puede administrar
+planes, características y contactos.
 */
-function puedeGestionarContenido(): bool
+function puedeGestionarContenido()
 {
-    $rolesPermitidos = ['Administrador', 'Asistente'];
+    if (!isset($_SESSION['rol'])) {
+        return false;
+    }
 
-    return isset($_SESSION['rol'])
-        && in_array($_SESSION['rol'], $rolesPermitidos, true);
+    return in_array(
+        $_SESSION['rol'],
+        ['Administrador', 'Asistente'],
+        true
+    );
 }
 
-/* Proteger las páginas de contenido */
-function requerirGestorContenido(): void
+/*
+Proteger módulos disponibles para
+Administradores y Asistentes.
+*/
+function requerirGestorContenido()
 {
     if (!puedeGestionarContenido()) {
         header("Location: dashboard.php?acceso=denegado");

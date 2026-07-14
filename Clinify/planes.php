@@ -1,6 +1,6 @@
 <?php
 
-/* Componentes generales del sitio */
+/* Componentes generales */
 include 'includes/header.php';
 include 'includes/navbar.php';
 
@@ -8,14 +8,11 @@ include 'includes/navbar.php';
 include 'config/conexion.php';
 
 /*
-Obtener el plan con más registros de interés.
+Obtener el plan con mayor cantidad de contactos
+interesados.
 
 Solo se consideran planes visibles:
-- Activo
-- Proximamente
-
-HAVING COUNT(contactos.id) > 0 evita mostrar
-la etiqueta cuando todavía no existe ningún interés.
+Activo y Proximamente.
 */
 $consultaMasVendido = "
     SELECT
@@ -42,18 +39,18 @@ if (
     $resultadoMasVendido &&
     mysqli_num_rows($resultadoMasVendido) > 0
 ) {
-    $planMasVendido = mysqli_fetch_assoc(
+    $filaMasVendido = mysqli_fetch_assoc(
         $resultadoMasVendido
     );
 
-    $planMasVendidoId = (int) $planMasVendido['id'];
+    $planMasVendidoId = (int) $filaMasVendido['id'];
 }
 
 /*
-Mostrar únicamente planes activos o próximos.
+Mostrar únicamente los planes que pueden
+ser vistos por los visitantes.
 
-Los planes desactivados solamente serán visibles
-desde el panel administrativo.
+Los desactivados solo aparecen en administración.
 */
 $consultaPlanes = "
     SELECT *
@@ -71,7 +68,7 @@ $resultadoPlanes = mysqli_query(
 
 <main>
 
-    <!-- Encabezado de la página -->
+    <!-- Encabezado -->
     <section class="hero hero-simple">
 
         <div class="contenedor">
@@ -85,15 +82,16 @@ $resultadoPlanes = mysqli_query(
             </h1>
 
             <p>
-                Conoce nuestras opciones y selecciona el plan
-                que se adapte a tus necesidades de organización médica.
+                Conoce nuestras opciones para organizar tu
+                información médica personal.
             </p>
 
         </div>
 
     </section>
 
-    <!-- Planes obtenidos desde MySQL -->
+
+    <!-- Planes -->
     <section class="seccion">
 
         <div class="contenedor">
@@ -110,20 +108,22 @@ $resultadoPlanes = mysqli_query(
                     ) { ?>
 
                         <?php
+
                         /*
-                        La tarjeta recibe una clase especial cuando
-                        el estado sea Proximamente.
+                        Comprobar si el plan todavía no se encuentra
+                        disponible.
                         */
                         $esProximamente =
                             $plan['estado'] === 'Proximamente';
 
                         /*
-                        Comprobamos si este es el plan con más
-                        solicitudes registradas.
+                        Comprobar si este plan tiene la mayor cantidad
+                        de contactos interesados.
                         */
                         $esMasVendido =
                             $planMasVendidoId !== null &&
                             (int) $plan['id'] === $planMasVendidoId;
+
                         ?>
 
                         <article class="
@@ -136,7 +136,6 @@ $resultadoPlanes = mysqli_query(
                                 : ''; ?>
                         ">
 
-                            <!-- Etiqueta calculada desde la BD -->
                             <?php if ($esMasVendido) { ?>
 
                                 <span class="badge">
@@ -145,7 +144,6 @@ $resultadoPlanes = mysqli_query(
 
                             <?php } ?>
 
-                            <!-- Estado próximo -->
                             <?php if ($esProximamente) { ?>
 
                                 <span class="badge-proximamente">
@@ -163,28 +161,34 @@ $resultadoPlanes = mysqli_query(
                             </h2>
 
                             <p class="precio">
+
                                 $<?php
                                 echo number_format(
                                     $plan['precio'],
                                     2
                                 );
                                 ?> MXN
+
                             </p>
 
                             <p class="periodo">
+
                                 <?php
                                 echo htmlspecialchars(
                                     $plan['periodo']
                                 );
                                 ?>
+
                             </p>
 
                             <p class="descripcion-plan">
+
                                 <?php
                                 echo htmlspecialchars(
                                     $plan['descripcion']
                                 );
                                 ?>
+
                             </p>
 
                             <ul class="lista-plan">
@@ -217,10 +221,6 @@ $resultadoPlanes = mysqli_query(
 
                             <?php if (!$esProximamente) { ?>
 
-                                <!--
-                                Enviamos el ID por GET para que el
-                                formulario lo seleccione automáticamente.
-                                -->
                                 <a
                                     href="contacto.php?plan=<?php echo $plan['id']; ?>"
                                     class="btn-principal">

@@ -63,87 +63,73 @@ if (isset($_SESSION['usuario_id'])) {
             </div>
 
             <!-- Formulario de acceso -->
-            <form
-                action="actions/validar_login.php"
-                method="POST"
-                class="formulario-login">
+     <form
+    action="actions/validar_login.php"
+    method="POST"
+    class="formulario-login">
 
-                <h2>Iniciar sesión</h2>
+    <h2>Iniciar sesión</h2>
 
-                <p class="texto-login">
-                    Ingresa tus credenciales de acceso.
-                </p>
+    <p class="texto-login">
+        Ingresa tus credenciales de acceso.
+    </p>
 
-                <?php if (isset($_GET['error'])) { ?>
+    <?php if (isset($_GET['error'])) { ?>
 
-                    <div class="mensaje-login error">
-                        Correo o contraseña incorrectos.
-                    </div>
+        <div class="mensaje-login error">
+            Correo o contraseña incorrectos.
+        </div>
 
-                <?php } ?>
+    <?php } ?>
 
-                <?php if (
-                    isset($_GET['sesion']) &&
-                    $_GET['sesion'] === 'cerrada'
-                ) { ?>
+    <div class="campo-login">
 
-                    <div class="mensaje-login exito">
-                        La sesión se cerró correctamente.
-                    </div>
+        <label for="correo">
+            Correo electrónico
+        </label>
 
-                <?php } ?>
+        <input
+            type="email"
+            id="correo"
+            name="correo"
+            maxlength="120"
+            placeholder="usuario@clinify.com"
+            autocomplete="email"
+            required>
 
-                <?php if (
-                    isset($_GET['cuenta']) &&
-                    $_GET['cuenta'] === 'inactiva'
-                ) { ?>
+    </div>
 
-                    <div class="mensaje-login error">
-                        Esta cuenta se encuentra desactivada.
-                    </div>
+    <div class="campo-login">
 
-                <?php } ?>
+        <label for="password">
+            Contraseña
+        </label>
 
-                <div class="campo-login">
+        <input
+            type="password"
+            id="password"
+            name="password"
+            minlength="8"
+            maxlength="100"
+            placeholder="Ingresa tu contraseña"
+            autocomplete="current-password"
+            required>
 
-                    <label for="correo">
-                        Correo electrónico
-                    </label>
+    </div>
 
-                    <input
-                        type="email"
-                        id="correo"
-                        name="correo"
-                        maxlength="120"
-                        placeholder="usuario@clinify.com"
-                        autocomplete="email"
-                        required>
+    <!--
+    type="submit" permite enviar el formulario.
+    Si el botón no tiene este tipo, podría no funcionar.
+    -->
+    <button
+        type="submit"
+        class="btn-ingresar">
 
-                </div>
+        Entrar
 
-                <div class="campo-login">
+    </button>
 
-                    <label for="password">
-                        Contraseña
-                    </label>
-
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        minlength="8"
-                        maxlength="100"
-                        placeholder="Ingresa tu contraseña"
-                        autocomplete="current-password"
-                        required>
-
-                </div>
-
-                <button type="submit" class="btn-ingresar">
-                    Ingresar
-                </button>
-
-            </form>
+</form>
 
         </section>
 

@@ -4,10 +4,14 @@
 El header protege la página y carga las funciones
 de autenticación y permisos.
 */
+require_once 'includes/autenticacion.php';
+
+/* Después cargamos la estructura visual */
 include 'includes/header.php';
 include 'includes/sidebar.php';
 
-include '../config/conexion.php';
+/* Conexión con la base de datos */
+require_once '../config/conexion.php';
 
 /* Valores iniciales del resumen */
 $totalPlanes = 0;
@@ -153,7 +157,7 @@ if (esAdministrador()) {
                 Agrega, modifica o elimina los planes disponibles.
             </p>
 
-            <a href="planes.php" class="btn-admin">
+            <a href="plan/planes.php" class="btn-admin">
                 Administrar planes
             </a>
 
@@ -167,7 +171,7 @@ if (esAdministrador()) {
                 Gestiona las características mostradas en el sitio.
             </p>
 
-            <a href="caracteristicas.php" class="btn-admin">
+            <a href="caracteristicas/caracteristicas.php" class="btn-admin">
                 Administrar características
             </a>
 
@@ -181,7 +185,7 @@ if (esAdministrador()) {
                 Consulta y elimina los mensajes recibidos.
             </p>
 
-            <a href="contactos.php" class="btn-admin">
+            <a href="contactos/contactos.php" class="btn-admin">
                 Ver contactos
             </a>
 
@@ -197,7 +201,7 @@ if (esAdministrador()) {
                     Administra los integrantes mostrados en Nosotros.
                 </p>
 
-                <a href="equipo.php" class="btn-admin">
+                <a href="equipo/equipo.php" class="btn-admin">
                     Administrar equipo
                 </a>
 

@@ -1,0 +1,335 @@
+/* =========================================================
+   EQUIPO — PANEL ADMINISTRATIVO
+========================================================= */
+
+:root {
+    --navy: #2f4156;
+    --teal: #567c8d;
+    --sky: #c8d9e6;
+    --white: #ffffff;
+    --text: #263238;
+}
+
+
+/* =========================================================
+   ENCABEZADOS
+========================================================= */
+
+.cabecera-equipo,
+.encabezado-formulario-equipo {
+    margin-bottom: 2rem;
+}
+
+.cabecera-equipo h1,
+.encabezado-formulario-equipo h1 {
+    margin: 0.4rem 0;
+    color: var(--navy);
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    line-height: 1.1;
+}
+
+.cabecera-equipo p,
+.encabezado-formulario-equipo p {
+    max-width: 45rem;
+    color: #56616a;
+}
+
+
+/* =========================================================
+   MENSAJES
+========================================================= */
+
+.mensaje-equipo {
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.2rem;
+    border-radius: 0.9rem;
+    font-weight: bold;
+}
+
+.mensaje-exito {
+    background-color: #dff2e9;
+    color: #287353;
+}
+
+.mensaje-error {
+    background-color: #f7dddd;
+    color: #a33a3a;
+}
+
+
+/* =========================================================
+   TABLA
+========================================================= */
+
+.contenedor-tabla-equipo {
+    width: 100%;
+    padding: 1.5rem;
+    overflow-x: auto;
+
+    border-radius: 1.3rem;
+    background-color: var(--white);
+    box-shadow: 0 0.8rem 2rem rgba(47, 65, 86, 0.11);
+}
+
+.tabla-equipo {
+    width: 100%;
+    min-width: 60rem;
+    border-collapse: collapse;
+}
+
+.tabla-equipo thead {
+    background-color: #f3f6f7;
+}
+
+.tabla-equipo th {
+    padding: 1rem;
+    border-bottom: 0.15rem solid var(--sky);
+
+    color: var(--navy);
+    text-align: left;
+    white-space: nowrap;
+}
+
+.tabla-equipo td {
+    padding: 1.1rem 1rem;
+    border-bottom: 1px solid #e3e8eb;
+    vertical-align: middle;
+}
+
+.tabla-equipo tbody tr:hover {
+    background-color: #f8fafb;
+}
+
+.tabla-equipo tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   INFORMACIÓN DEL INTEGRANTE
+========================================================= */
+
+.foto-integrante-admin {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 0.2rem solid var(--sky);
+}
+
+.nombre-integrante {
+    color: var(--navy);
+}
+
+.rol-integrante {
+    display: inline-block;
+    padding: 0.4rem 0.75rem;
+    border-radius: 2rem;
+
+    background-color: var(--sky);
+    color: var(--navy);
+
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.descripcion-integrante {
+    max-width: 30rem;
+    color: #68747c;
+    line-height: 1.5;
+}
+
+.btn-editar-integrante {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.6rem 1rem;
+    border-radius: 0.7rem;
+
+    background-color: var(--teal);
+    color: var(--white);
+
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.btn-editar-integrante:hover {
+    background-color: var(--navy);
+}
+
+.tabla-equipo-vacia {
+    padding: 3rem !important;
+    color: #68747c;
+    text-align: center;
+}
+
+
+/* =========================================================
+   FORMULARIO DE EDICIÓN
+========================================================= */
+
+.contenedor-formulario-equipo {
+    width: min(100%, 50rem);
+}
+
+.formulario-equipo {
+    padding: clamp(1.4rem, 4vw, 2.5rem);
+
+    border-radius: 1.3rem;
+    background-color: var(--white);
+    box-shadow: 0 0.8rem 2rem rgba(47, 65, 86, 0.11);
+}
+
+
+/* Imagen informativa */
+.vista-foto-integrante {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+
+    margin-bottom: 2rem;
+    padding: 1.2rem;
+
+    border-radius: 1rem;
+    background-color: #f3f6f7;
+}
+
+.vista-foto-integrante img {
+    width: 6rem;
+    height: 6rem;
+
+    border-radius: 50%;
+    object-fit: cover;
+    border: 0.25rem solid var(--sky);
+}
+
+.vista-foto-integrante p {
+    color: #59666e;
+    line-height: 1.5;
+}
+
+
+/* Campos */
+.campo-equipo {
+    margin-bottom: 1.4rem;
+}
+
+.campo-equipo label {
+    display: block;
+    margin-bottom: 0.5rem;
+
+    color: var(--navy);
+    font-weight: bold;
+}
+
+.campo-equipo input,
+.campo-equipo textarea {
+    width: 100%;
+    padding: 0.95rem 1rem;
+
+    border: 1px solid var(--sky);
+    border-radius: 0.8rem;
+
+    background-color: var(--white);
+    color: var(--text);
+
+    font: inherit;
+    outline: none;
+}
+
+.campo-equipo input:focus,
+.campo-equipo textarea:focus {
+    border-color: var(--teal);
+    box-shadow:
+        0 0 0 0.2rem rgba(86, 124, 141, 0.14);
+}
+
+.campo-equipo textarea {
+    min-height: 10rem;
+    resize: vertical;
+}
+
+.campo-equipo small {
+    display: block;
+    margin-top: 0.4rem;
+    color: #68747c;
+}
+
+
+/* =========================================================
+   BOTONES DEL FORMULARIO
+========================================================= */
+
+.acciones-formulario-equipo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-guardar-equipo,
+.btn-cancelar-equipo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.9rem 1.4rem;
+    border-radius: 2rem;
+
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-guardar-equipo {
+    border: none;
+    background-color: var(--teal);
+    color: var(--white);
+}
+
+.btn-guardar-equipo:hover {
+    background-color: var(--navy);
+}
+
+.btn-cancelar-equipo {
+    border: 1px solid var(--navy);
+    color: var(--navy);
+}
+
+.btn-cancelar-equipo:hover {
+    background-color: var(--navy);
+    color: var(--white);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .contenedor-tabla-equipo {
+        padding: 0.8rem;
+    }
+
+    .formulario-equipo {
+        padding: 1.3rem;
+    }
+
+    .vista-foto-integrante {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .acciones-formulario-equipo {
+        flex-direction: column;
+    }
+
+    .btn-guardar-equipo,
+    .btn-cancelar-equipo {
+        width: 100%;
+    }
+
+}
