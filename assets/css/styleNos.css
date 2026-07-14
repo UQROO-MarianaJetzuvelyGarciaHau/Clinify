@@ -13,6 +13,7 @@
 }
 
 .miembro {
+
     text-align: center;
 
 }
@@ -21,10 +22,14 @@
 
     width: 9rem;
     height: 9rem;
+
     border-radius: 50%;
+
     object-fit: cover;
+
     margin: auto;
     margin-bottom: 1.5rem;
+
     border: 5px solid var(--sky);
 
 }
@@ -32,13 +37,34 @@
 .rol-miembro {
 
     color: var(--teal);
+
     font-weight: bold;
+
     margin: .8rem 0;
 
 }
 
 
-@media(max-width:900px) {
+/*==================================
+        TABLETS
+==================================*/
+
+@media (max-width: 900px) {
+
+    .nosotros-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+
+/*==================================
+        CELULARES
+==================================*/
+
+@media (max-width: 600px) {
 
     .nosotros-grid {
 
