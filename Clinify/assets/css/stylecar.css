@@ -1,0 +1,38 @@
+/* =========================
+   PÁGINA CARACTERÍSTICAS
+========================= */
+
+.caracteristicas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.caracteristica-card {
+    text-align: center;
+}
+
+.caracteristica-card img {
+    width: 5rem;
+    height: 5rem;
+    object-fit: contain;
+    margin: 0 auto 1.5rem;
+}
+
+.caracteristica-card h3 {
+    color: var(--navy);
+    margin-bottom: 0.8rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .caracteristicas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .caracteristicas-grid {
+        grid-template-columns: 1fr;
+    }
+}

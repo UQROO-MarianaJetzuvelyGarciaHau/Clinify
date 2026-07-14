@@ -1,0 +1,79 @@
+<?php
+
+/*
+Este archivo se utiliza una sola vez para crear
+el primer administrador del sistema.
+
+Después de ejecutarlo correctamente, debe eliminarse.
+*/
+
+include '../config/conexion.php';
+
+/* Datos del primer administrador */
+$nombre = "Administrador Clinify";
+$correo = "admin@clinify.com";
+$password = "Clinify123";
+$idRol = 1; // 1 corresponde al rol Administrador
+$estado = 1;
+
+/* Verificar si el correo ya existe */
+$consultaExistente = "SELECT id
+                      FROM usuarios
+                      WHERE correo = ?
+                      LIMIT 1";
+
+$stmtExistente = mysqli_prepare($conexion, $consultaExistente);
+
+mysqli_stmt_bind_param($stmtExistente, "s", $correo);
+mysqli_stmt_execute($stmtExistente);
+
+$resultadoExistente = mysqli_stmt_get_result($stmtExistente);
+$usuarioExistente = mysqli_fetch_assoc($resultadoExistente);
+
+mysqli_stmt_close($stmtExistente);
+
+if ($usuarioExistente) {
+    exit("El usuario inicial ya existe. Puedes eliminar este archivo.");
+}
+
+/*
+Cifrar la contraseña antes de guardarla.
+
+La contraseña original nunca se almacena directamente
+en la base de datos.
+*/
+$passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
+/* Consulta preparada para insertar al usuario */
+$consulta = "INSERT INTO usuarios
+             (nombre, correo, password, id_rol, estado)
+             VALUES (?, ?, ?, ?, ?)";
+
+$stmt = mysqli_prepare($conexion, $consulta);
+
+if (!$stmt) {
+    exit("Error al preparar la consulta.");
+}
+
+mysqli_stmt_bind_param(
+    $stmt,
+    "sssii",
+    $nombre,
+    $correo,
+    $passwordHash,
+    $idRol,
+    $estado
+);
+
+if (mysqli_stmt_execute($stmt)) {
+    echo "
+        <h2>Administrador creado correctamente</h2>
+        <p><strong>Correo:</strong> admin@clinify.com</p>
+        <p><strong>Contraseña:</strong> Clinify123</p>
+        <p>Por seguridad, elimina el archivo crear_usuario_inicial.php.</p>
+    ";
+} else {
+    echo "No se pudo crear el administrador.";
+}
+
+mysqli_stmt_close($stmt);
