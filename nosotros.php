@@ -101,7 +101,7 @@ $resultado = mysqli_query($conexion, $consulta);
                     <article class="card miembro">
 
                         <img
-                            src="assets/img/<?php echo $integrante['id']; ?>.png"
+                            src="assets/img/<?php echo $integrante['id']; ?>.webp"
                             alt="<?php echo $integrante['nombre']; ?>"
                             loading="lazy"
                             decoding="async">
