@@ -1,0 +1,75 @@
+/*==================================
+        NOSOTROS
+==================================*/
+
+.nosotros-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 2rem;
+
+}
+
+.miembro {
+
+    text-align: center;
+
+}
+
+.miembro img {
+
+    width: 9rem;
+    height: 9rem;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    margin: auto;
+    margin-bottom: 1.5rem;
+
+    border: 5px solid var(--sky);
+
+}
+
+.rol-miembro {
+
+    color: var(--teal);
+
+    font-weight: bold;
+
+    margin: .8rem 0;
+
+}
+
+
+/*==================================
+        TABLETS
+==================================*/
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .nosotros-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+
+/*==================================
+        CELULARES
+==================================*/
+
+@media (max-width: 767px) {
+
+    .nosotros-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
