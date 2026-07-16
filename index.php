@@ -152,7 +152,7 @@ include 'includes/navbar.php';
             <div class="hero-imagen">
 
                 <img
-                    src="assets/img/logo-clinify.png"
+                    src="assets/img/logo-clinify.webp"
                     alt="Vista del logo de Clinify"
                     width="600"
                     height="600"
@@ -254,7 +254,7 @@ include 'includes/navbar.php';
             <div class="info-imagen">
 
                 <img
-                    src="assets/img/image-clinify.png"
+                    src="assets/img/image-clinify.webp"
                     alt="Aplicación de salud Clinify">
 
             </div>
